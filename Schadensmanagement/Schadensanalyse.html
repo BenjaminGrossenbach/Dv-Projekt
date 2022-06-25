@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Schadensmanagement</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    #yes{
+        text-align: center;
+        display: none;
+    }
+
+    #no{
+        text-align: center;
+        display: none;
+    }
+
+    #knopf1{
+        display: block;
+    }
+
+    #knopf2{
+        display: none;
+    }
+
+    #knopf3{
+        display: none;
+    }
+</style>
+
+</head>
+
+
+<body>
+
+<button onclick="window.location.href = 'http:Schadensmanagement.php';"> Zurück</button>
+
+<br><br>
+
+<div id="knopf1">
+<button onclick="add()">Schaden hinzufügen</button>
+
+<button onclick="del()">Schaden entfernen</button>
+</div>
+
+
+<script>  // öffnet Schaden hinzufügen
+    function add(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("yes");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf2");
+    x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "block";
+    }
+    
+</script>
+
+
+<script>  // öffnet Schaden entfernen
+    function del(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("no");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf3");
+    x.style.display = "block";
+    y.style.display = "none";
+    z.style.display = "block";
+    }
+    
+</script>
+
+
+<script>  // Schaden wird eingetragen
+    function acc(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("yes");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf2");
+var a = document.getElementById("no");
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+    a.style.display = "none";
+
+// Informationen aus den Textfeldern auslesen
+var KNR = document.getElementById("KNR").value;
+var AID = document.getElementById("AID").value; 
+var Datum = document.getElementById("Datum").value;
+var Typ = document.getElementById("Typ").value;
+
+// Informationen an die PHP zur Ausführung des Eintrages schicken
+window.location.href ="Acc.php?AID1="+AID+"&Art1="+Typ+"&KNR="+KNR+"&Datum="+Datum;
+
+// Leeren der Textfelder
+document.getElementById("KNR").value = '';
+document.getElementById("AID").value = '';
+document.getElementById("Datum").value = '';
+document.getElementById("Typ").value = '';
+    }
+
+</script>
+
+
+<script>  // Eintrag wird Abgebrochen
+    function abb(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("yes");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf2");
+var a = document.getElementById("no");
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+    a.style.display = "none";
+    
+// Leeren der Textfelder
+document.getElementById("KNR").value = '';
+document.getElementById("AID").value = '';
+document.getElementById("Datum").value = '';
+document.getElementById("Art").value = '';
+    }
+
+</script>
+
+
+<script>  // Reperatur wird eingetragen
+    function acc2(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("yes");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf3");
+var a = document.getElementById("no");
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+    a.style.display = "none";
+
+// Information aus dem Textfeld auslesen
+var AID2 = document.getElementById("AID2").value; 
+
+// Informationen an die PHP zur Ausführung des Eintrages schicken
+window.location.href ="Acc2.php?AID3="+AID2;
+
+// Leeren des Textfeldes  
+document.getElementById("AID2").value = '';
+    }
+
+</script>
+
+
+<script>  // Reperatur Eintrag wird abgebrochen
+    function abb2(){
+
+// Änderung des Erscheinungsbildes der Website
+var x = document.getElementById("yes");
+var y = document.getElementById("knopf1");
+var z = document.getElementById("knopf3");
+var a = document.getElementById("no");
+    x.style.display = "none";
+    y.style.display = "block";
+    z.style.display = "none";
+    a.style.display = "none";  
+
+// Leeren des Textfeldes
+document.getElementById("AID2").value = '';
+    }
+
+</script>
+
+
+<!--Schaden hinzufügen-->
+<div id="yes">
+<p><b>Schaden hinzufügen</b></p>
+<p>  Kundennummer: </p><textarea id="KNR"></textarea>
+<p>   KFZ-ID: </p><textarea id="AID"></textarea>
+<p>  Feststelldatum:  </p><textarea id="Datum">YYYY-MM-DD</textarea>
+<p>  Schadensart  </p><textarea id="Typ"></textarea>
+</div>
+
+
+<!--Schden entfernen-->
+<div id="no">
+<p><b>Schaden entfernen</b></p>
+<p>KFZ-ID:</p><textarea id="AID2"></textarea>
+</div>
+
+
+<!-- Knöpfe bei hinzufügen -->
+<div id="knopf2"> 
+<button onclick="acc()">Eintragen</button>
+
+<button onclick="abb()">Abbrechen</button>
+</div>
+
+
+<!-- Knöpfe bei entfernen -->
+<div id="knopf3"> 
+    <button onclick="acc2()">Eintragen</button>
+    
+    <button onclick="abb2()">Abbrechen</button>
+    </div>
+
+
+</body>
+
+
+</html>
